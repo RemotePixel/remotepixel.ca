@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Publish before/after map on your website">
+	<meta name="author" content="Vincent Sarago for RemotePixel.ca">
+    <meta name="twitter:title" content="Publish before/after map on your website" />
+    <meta name="twitter:site" content="@RemotePixel" />
+    <meta name="twitter:description" content="Publish before/after map on your website" />
+
+	<title>Blog | Publish before/after map on your website</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_general.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_blogpost.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60678866-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+<body id="page-top" data-target=".navbar-fixed-top">
+	<!-- Navigation -->
+	<nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-main-collapse">
+					<i class="fa fa-bars" style="color: #fff"></i>
+				</button>
+				<a class="navbar-brand page-scroll"
+					href="/blog/index.html#emb_ba"> <i
+                    class="fa fa-play-circle"></i> <span class="light">back to Blog</span></a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div
+				class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+					<li class="hidden"><a href="#page-top"></a></li>
+                    <li><a class="glyphicon glyphicon-home" href="/"></a></li>
+                    <li><a href="/projects/index.html">projects</a></li>
+                    <li><a href="/blog/index.html">Blog</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<a id="back-to-top" href="#page-top" class="display-none">
+	    <i class="fa fa-level-up"></i>
+	    back to top
+	</a>
+
+	<div class="post-content">
+		<div class="titre">
+			<h1>Publish before/after map on your website</h1>
+        </div>
+
+        <div class="corps">
+			<p>I made a slight change on the <a href="/projects/modisviirs_beforeafter.php" target="_blank">MODIS-VIIRS Before/After</a>
+				with able anyone to export a an embedded version of the before / after map.</p>
+			<p>Simply click on the share button, select the code option (<i class="fa fa-code"></i>) and copy/paste the code onto your web page</p>
+			<p>Examples:</p>
+			<p>
+				Before / After map of Libyan oil tanks attacked by ISIS
+				<iframe frameborder="0" width="100%" height="360" src="https://remotepixel.ca/projects/viirsmodis_compare_emb.html?leftmap=VIIRS_SNPP_CorrectedReflectance_TrueColor&leftdate=2016-01-06&latlngZ=[30.569355748003844,18.389739990234375,9]&rightmap=VIIRS_SNPP_CorrectedReflectance_BandsM11-I2-I1&rightdate=2016-01-06&angle=0"></iframe>
+			</p>
+
+			<p>
+				Before / After map of Midwest flooding
+				<iframe frameborder="0" width="100%" height="360" src="https://remotepixel.ca/projects/viirsmodis_compare_emb.html?leftmap=VIIRS_SNPP_CorrectedReflectance_BandsM11-I2-I1&leftdate=2015-12-19&latlngZ=[37.21501884556321,-88.92745971679688,9]&rightmap=VIIRS_SNPP_CorrectedReflectance_BandsM11-I2-I1&rightdate=2016-01-02&angle=0"></iframe>
+			</p>
+
+			<p>
+				Before / After map of late december UK floods
+				<iframe frameborder="0" width="100%" height="360" src="https://remotepixel.ca/projects/viirsmodis_compare_emb.html?leftmap=MODIS_Terra_CorrectedReflectance_Bands721&leftdate=2015-12-29&latlngZ=[53.76657243186167,-0.990142822265625,9]&rightmap=MODIS_Terra_CorrectedReflectance_Bands721&rightdate=2015-09-06&angle=0"></iframe>
+			</p>
+
+        </div>
+
+
+	    <ul class="info-blogpost">
+		    <li>Date: January 2016</li>
+			<li>Category: MODIS / VIIRS / OpenData</li>
+		</ul>
+
+        <!-- Footer -->
+        <footer style="padding-top:10px">
+            <div class="text-center">
+                <a id="twitter" class="sharebutt" href="" title="Share on Twitter" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <a id="linkedin" class="sharebutt" href="" title="Share on LinkedIn" target="_blank">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+
+                <a id="facebook" class="sharebutt" href="" title="Share on Facebook" target="_blank">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </div>
+        </footer>
+
+	</div> <!-- /post-content -->
+
+	<!-- jQuery -->
+	<script src="/js/jquery.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/js/bootstrap.min.js"></script>
+
+	<!-- general Theme JavaScript -->
+	<script src="/js/rpix_blogpost.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            $("#twitter").attr('href','http://twitter.com/share?text=' + document.title.replace('|', '%7C') + '&url=' + window.location.href + '&via=RemotePixel');
+            $("#linkedin").attr('href','http://www.linkedin.com/shareArticle?mini=true&url=' + window.location.href + '&title='+ document.title + '&source=https://remotepixel.ca');
+            $("#facebook").attr('href','https://www.facebook.com/sharer/sharer.php?u=' + window.location.href);
+        });
+    </script>
+
+</body>
+</html>

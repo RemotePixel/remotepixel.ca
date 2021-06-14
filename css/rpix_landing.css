@@ -1,0 +1,235 @@
+/*!
+ * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+.intro {
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    padding-top: 50px;
+    text-align: center;
+    color: #fff;
+    background: url(/img/S2_China.jpg) no-repeat bottom center scroll;
+    background-color: #000;
+    background-size: cover;
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+}
+
+.intro .intro-body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.intro .intro-body .brand-heading {
+    font-size: 40px;
+}
+
+.intro .intro-body .intro-text {
+    font-size: 18px;
+}
+
+@media ( min-width :767px) {
+    .intro .intro-body .brand-heading {
+        font-size: 100px;
+    }
+    .intro .intro-body .intro-text {
+        font-size: 25px;
+    }
+    .landsat_copyright {
+        font-size: 7px;
+    }
+}
+
+.footer {
+    position: relative;
+    width: 100%;
+}
+
+.footer-content{
+    color: #359aef;
+    font-size: 16px;
+    font-weight: 100;
+    text-align: left;
+}
+
+.bottom-left-button{
+    padding: 10px 25px;
+}
+
+.back-grey{
+    background-color: rgb(248, 248, 248);
+}
+
+.credits-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 13px;
+    color: #000;
+}
+
+@media(max-width: 767px) {
+    .credits-page {
+        right: 0%;
+        transform: translate(10%, -50%);
+    }
+}
+
+.section-land {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #afafaf;
+}
+
+.section-land-heading {
+    font-size: 20px;
+    margin: 0;
+}
+
+.section-land-footer {
+  padding-top: 10px;
+}
+
+.section-land-footer span{
+    font-size: 12px;
+    display: block;
+}
+
+.section-land-blog {
+  padding-top: 10px;
+}
+
+.blogtitle {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.section-land-blog p {
+  font-size: 10px;
+  margin: 0 0 5px;
+}
+.section-land-blog h5 {
+  font-size: 12px;
+  margin: 0 0 7px;
+}
+
+.portfolio-item {
+	margin-top: 15px;
+}
+
+.portfolio-item .portfolio-link {
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	max-width: 400px;
+}
+
+.portfolio-item .portfolio-link .portfolio-hover {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background: rgba(200, 200, 200, .5);
+	-webkit-transition: all ease .5s;
+	-moz-transition: all ease .5s;
+	transition: all ease .5s;
+}
+
+.portfolio-item .portfolio-link .portfolio-hover:hover {
+	opacity: 1;
+}
+
+.portfolio-item .portfolio-caption {
+	margin: 0 auto;
+	padding: 5px;
+	text-align: center;
+	background-color: #fff;
+}
+
+.portfolio-item .portfolio-caption p {
+  margin: 0;
+}
+
+.btn-back {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    color: #000;
+    width: auto;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 100;
+    padding: 6px 12px;
+    cursor: pointer;
+    background: transparent;
+    z-index: 2;
+    border:none;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.btn-back:hover{
+    text-decoration: none;
+    color: #FFF;
+    background-color: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.btn {
+	text-transform: uppercase;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+
+.btn-default {
+	border: 1px solid #000;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-default:hover, .btn-default:focus {
+	border: 1px solid #000;
+	outline: 0;
+	color: #FFF;
+	background-color: #000;
+}
+
+ul.banner-social-buttons {
+	margin-top: 0;
+}
+
+@media ( max-width :1199px) {
+	ul.banner-social-buttons {
+		margin-top: 15px;
+	}
+}
+
+@media ( max-width :767px) {
+	ul.banner-social-buttons li {
+		display: block;
+		margin-bottom: 20px;
+		padding: 0;
+	}
+	ul.banner-social-buttons li:last-child {
+		margin-bottom: 0;
+	}
+}

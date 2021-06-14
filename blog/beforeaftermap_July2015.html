@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Learn how-to create and host your own Before/After map">
+    <meta name="author" content="Vincent Sarago">
+    <meta name="twitter:title" content="Tutorial - Before/After Map Creation" />
+    <meta name="twitter:site" content="@RemotePixel" />
+    <meta name="twitter:description" content="Learn how-to create and host your own Before/After map" />
+
+	<title>Blog | Tutorial - Before/After Map Creation</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_general.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_blogpost.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet"
+		type="text/css">
+	<link
+		href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
+		rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+		rel="stylesheet" type="text/css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60678866-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <style>
+        .inside-list{
+            text-align:left;
+        }
+        .inside-list li{
+		    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+		    font-weight: 200;
+		    text-align: left;
+		    margin: 8px 25px 5px;
+		    color: #000;
+		    font-size: 13px;
+		}
+    </style>
+
+</head>
+
+<body id="page-top" data-target=".navbar-fixed-top">
+	<!-- Navigation -->
+	<nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-main-collapse">
+					<i class="fa fa-bars" style="color: #fff"></i>
+				</button>
+				<a class="navbar-brand page-scroll"
+					href="/blog/index.html#L8baTuto"> <i
+                    class="fa fa-play-circle"></i> <span class="light">back to Blog</span></a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div
+				class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+					<li class="hidden"><a href="#page-top"></a></li>
+                    <li><a class="glyphicon glyphicon-home" href="/"></a></li>
+                    <li><a href="/projects/index.html">projects</a></li>
+                    <li><a href="/blog/index.html">Blog</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<a id="back-to-top" href="#page-top" class="display-none">
+	    <i class="fa fa-level-up"></i>
+	    back to top
+	</a>
+
+	<div class="post-content">
+		<div class="titre">
+			<h1>Create your own Before / After map</h1>
+        </div>
+
+        <div class="corps">
+
+            <p>Few hours after releasing <a href="/projects/landsat8beforeafter.html"  target="_blank">Landsat 8 Before/After</a>
+            I had a question on how to do it with other images than Landsat 8 previews. So here is a quick tutorial:</p>
+
+            <p>First you need to load some libraries and define some styles </p>
+			<pre style="text-align: left;"><code>&lt;html lang="en"&gt;
+&lt;head&gt;
+        &lt;!-- CSS Libraries --&gt;
+	&lt;link href="css/leaflet.css" rel="stylesheet"&gt;
+
+        &lt;!-- Javascript Libraries --&gt;
+        &lt;!-- Respect the order --&gt;
+	&lt;script src="js/jquery.js"&gt;&lt;/script&gt;
+	&lt;script src="js/jquery-ui.min.js"&gt;&lt;/script&gt;
+	&lt;script src="js/jquery.ui.touch-punch.min.js"&gt;&lt;/script&gt;
+	&lt;script src="js/jquery.beforeafter-map-1.01.js"&gt;&lt;/script&gt;
+	&lt;script src="js/leaflet.js"&gt;&lt;/script&gt;
+	&lt;script src="js/L.Map.Sync.js"&gt;&lt;/script&gt; &lt;!--https://github.com/turban/Leaflet.Sync--&gt
+	&lt;style&gt;
+		body{
+		    position:fixed;
+		    height: 100%;
+		    width: 100%;
+		    margin: 0px;
+		    padding: 0px;
+		}
+		#map-container{
+		    position: relative;
+		    height: 100%;
+		    width: 100%;
+		}
+		.map{
+		    position: absolute;
+		    height: 100%;
+		    width: 100%;
+		    top: 0px;
+		    left: 0px;
+		}
+        &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+            <p>Define the html containers in your body</p>
+
+            <pre style="text-align: left;"><code>&lt;body&gt;
+    &lt;div id="map-container"&gt; &lt;!-- Map Container --&gt;
+	&lt;div id="map-before" class="map"&gt;&lt;/div&gt; &lt;!-- Left Map --&gt;
+	&lt;div id="map-after" class="map"&gt;&lt;/div&gt; &lt;!-- Right Map --&gt;
+    &lt;/div&gt;</code></pre>
+
+            <p>Now we initialize the maps content</p>
+
+            <pre style="text-align: left;"><code>&lt;script&gt;
+	mapbefore = L.map('map-before', {
+	    zoom: 1,
+	    attributionControl: false,
+	    zoomControl: false,
+	    touchZoom: false,
+	    //doubleClickZoom: 'center', //options
+	    //scrollWheelZoom: 'center', //options
+	    inertia: false,
+	    //minZoom: 1, //options
+	    //maxZoom: 11, //options
+	    center: [1,1]
+	});
+
+	mapafter = L.map('map-after', {
+	    zoom: 1,
+	    attributionControl: false,
+	    zoomControl: false,
+	    touchZoom: false,
+	    //doubleClickZoom: 'center', //options
+	    //scrollWheelZoom: 'center', //options
+	    inertia: false,
+	    //minZoom: 1, //options
+	    //maxZoom: 11, //options
+	    center: [1,1]
+	});
+
+	var osm_url = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	var attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+	L.tileLayer(osm_url).addTo(mapbefore);
+	L.tileLayer(osm_url, {id: 'MapID', attribution: attribution}).addTo(mapafter);
+
+	L.control.zoom({position:'topright'}).addTo(mapafter);
+	L.control.attribution({position:'bottomright'}).addTo(mapafter);
+
+
+	before_overlays = new L.layerGroup().addTo(mapbefore);
+	after_overlays = new L.layerGroup().addTo(mapafter);
+
+	mapbefore.sync(mapafter);
+	mapafter.sync(mapbefore);
+
+	$('#map-container').beforeAfter(mapbefore, mapafter);
+    &lt;/script&gt;</code></pre>
+
+        <p>Your page is almost ready, we just need to add data on both side.</p>
+
+        <p>Using the new <a href="http://fetch.astrodigital.com" target="_blank">Astro Digital platform</a>
+        to <i>"search, process, and publish imagery"</i>, you can create tile layers of landsat image</p>
+
+        <pre style="text-align: left;"><code>&lt;script&gt;
+        //tile layers found on <a href="http://beta.openaerialmap.org/" target="_blank"> Hot OSM OpenAerialMap</a>
+        attribution = '&copy Landsat imagery courtesy of NASA and USGS, processed by <a href="https://www.astrodigital.com" target="_blank">AstroDigital</a>';
+        tileUrl = 'http://a.tiles.mapbox.com/v4/' +
+        'astrodigital.LC80150342014210LGN00_bands_432/{z}/{x}/{y}.png?access_token={MAPBOX TOKEN};
+        L.tileLayer(tileUrl, {attribution: attribution}).addTo(before_overlays);
+
+        tileUrl = 'http://a.tiles.mapbox.com/v4/' +
+        'astrodigital.LC80150342015037LGN00_bands_432/{z}/{x}/{y}.png?access_token={MAPBOX TOKEN}';
+        L.tileLayer(tileUrl, {attribution: attribution}).addTo(after_overlays);
+
+        mapafter.setView([37.3, -77], 10) // set view on the area
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+	        <p>Another way is to process by yourself some images using gdal or <a href="https://github.com/developmentseed/landsat-util" target="_blank">landsat-util</a></p>
+	        <div class="inside-list">
+	            <li>Find and download images you want, using <a href="http://earthexplorer.usgs.gov" target="_blank">Earth Explorer</a> or <a href="https://libra.developmentseed.org" target="_blank">Libra</a></li>
+	            <li>Process images using landsat-util (merge, pansharp...) or gdal</li>
+	            <li>Reproject your data to the pseudo mercator projection (EPSG:3857) (gdalwarp or landsat-util)</li>
+	            <li>Create your own tile layer using <a href="https://github.com/commenthol/gdal2tiles-leaflet" target="_blank">gdal2tiles.py</a> or <a href="https://github.com/commenthol/gdal2tiles-leaflet" target="_blank">gdal2tiles for leaflet</a></li>
+
+	        </div>
+
+            <div class="info-post">
+                <h5>More info and Usefull links:</h5>
+                <li>Download the demo page (zipped with all js libraries) <a href="data/demo.zip" target="_blank">Here</a></li>
+            </div>
+
+        </div>
+
+	    <ul class="info-blogpost">
+		    <li>Date: July 2015</li>
+			<li>Category: WebMapping / Leaflet</li>
+		</ul>
+
+        <!-- Footer -->
+        <footer style="padding-top:10px">
+            <div class="text-center">
+                <a id="twitter" class="sharebutt" href="" title="Share on Twitter" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <a id="linkedin" class="sharebutt" href="" title="Share on LinkedIn" target="_blank">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+
+                <a id="facebook" class="sharebutt" href="" title="Share on Facebook" target="_blank">
+                    <i class="fa fa-facebook"></i>
+                </a>
+
+            </div>
+        </footer>
+
+	</div> <!-- /post-content -->
+
+	<!-- jQuery -->
+	<script src="/js/jquery.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/js/bootstrap.min.js"></script>
+
+	<!-- general Theme JavaScript -->
+	<script src="/js/rpix_blogpost.js"></script>
+
+    <script>
+
+        $( document ).ready(function() {
+            $("#twitter").attr('href','http://twitter.com/share?text=' + document.title.replace('|', '%7C') + '&url=' + window.location.href + '&via=RemotePixel');
+            $("#linkedin").attr('href','http://www.linkedin.com/shareArticle?mini=true&url=' + window.location.href + '&title='+ document.title + '&source=https://remotepixel.ca');
+            $("#facebook").attr('href','https://www.facebook.com/sharer/sharer.php?u=' + window.location.href);
+        });
+    </script>
+
+</body>
+</html>

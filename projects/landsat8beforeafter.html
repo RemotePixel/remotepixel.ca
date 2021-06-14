@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Easy creation of Landsat 8 Before/After map">
+	<meta name="author" content="Vincent Sarago">
+    <meta name="twitter:title" content="Landsat 8 Before/After" />
+    <meta name="twitter:site" content="@RemotePixel" />
+    <meta name="twitter:description" content="Easy creation of Landsat 8 Before/After map" />
+
+	<title>Remote Pixel | Landsat 8 Before/After</title>
+
+    <!-- leaflet CSS -->
+    <link href="/css/leaflet.css" rel="stylesheet">
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- JQuerry CSS -->
+    <link href="/css/jquery.nouislider.css" rel="stylesheet">
+    <link href="/css/jquery.nouislider.pips.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_general.css" rel="stylesheet">
+    <link href="/css/rpix_landsat8ba.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+
+ 	<script>
+   	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+   	  ga('create', 'UA-60678866-1', 'auto');
+   	  ga('send', 'pageview');
+	</script>
+
+</head>
+
+<body data-target=".navbar-fixed-top">
+    <!-- Navigation -->
+	<nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars" style="color: #fff"></i></button>
+
+				<a class="navbar-brand page-scroll" href="/projects/index.html#L8ba">
+				    <i class="fa fa-play-circle"></i>
+				    <span class="light">back to Projects</span>
+			    </a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden"><a href="#page-top"></a></li>
+                    <li><a class="glyphicon glyphicon-home" href="/"></a></li>
+                    <li><a href="/projects/index.html">projects</a></li>
+                    <li><a href="/blog/index.html">Blog</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- /.container -->
+	</nav>
+
+    <div class="content">
+
+        <div class="h4noim display-none">
+            <h4 id="noim" >No Landsat 8 Image Available</h4>
+        </div>
+
+		<div id="map-container" class="leaflet-map">
+            <div id="map" class="map">
+                <img class="centerIcon" src="/img/marker-icon.png" style="display: inline;">
+            </div>
+        </div>
+
+        <div id="map-container-ba" class="leaflet-map display-none"></div>
+
+        <div class="col-md-4 col-xs-4 col-lg-4 left display-none" id="imagePane">
+            <button id="closewall" type="button" class="close" onclick="closeimagePane()"><i class="fa fa-times-circle"></i></button>
+            <div id="landsat-wall" class="landsat-wall"></div>
+        </div>
+    </div>
+
+   <!-- Modal -->
+    <div  id="modalShare" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="sharezone">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+            <a id="twitter" class="sharebutt" href="" title="Share on Twitter" target="_blank">
+                <i class="fa fa-twitter"></i>
+            </a>
+            <a id="linkedin" class="sharebutt" href="" title="Share on LinkedIn" target="_blank">
+                <i class="fa fa-linkedin"></i>
+            </a>
+            <a id="facebook" class="sharebutt" href="" title="Share on Facebook" target="_blank">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </div>
+    </div>
+    <!-- /.modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalAbout" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" style="text-align:center; color:#000;">Landsat 8 Before/After</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="hmodal-info">
+                       <p>Landsat 8 Before/After is a tool to pre-visualize earth changes using open Landsat 8 satellite imagery.</p>
+
+	                    <ol class="deci">
+                            <li>Dragg the THE MAP <img src="/img/marker-icon-2x.png" style="height:16px"> to an area of interest</li>
+                            <li>Click on one scenes row-path combination available</li>
+		                    <li>Select images you want to compare</li>
+		                    <li>Filters can be used to select a new date range, and cloud cover percentage or seasons</li>
+    	                </ol>
+
+	                    <p>Search results are powered by <a href="https://github.com/developmentseed/landsat-api" target="_blank">Landsat 8 Metadata API</a>
+	                    and images from <a href="http://earthexplorer.usgs.gov" target="_blank">USGS Earth Explorer</a>.</p>
+
+	                    <p>Questions or comments to <a href="mailto:vincent.sarago@gmail.com">vincent.sarago@gmail.com</a></p>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalAbout-pane2" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" style="text-align:center; color:#000;">Landsat 8 Before/After</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="hmodal-info">
+                        <img class="img-thumbnail" src="img/help_landsatba2.jpg">
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalFilters" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <button id="closefilters" type="button" class="close" data-dismiss="modal" ><i class="fa fa-times-circle"></i></button>
+
+                <div class="btn-group" role="group" aria-label="...">
+                    <button id="date" type="button" class="btn btn-default filter-butt active" onclick="toggleOpenFilter('date')"><i class="fa fa-calendar-o fa-2x"><hbut id="string-date"> : 0% - 100%</hbut></i></button>
+                    <button id="cloud" type="button" class="btn btn-default filter-butt" onclick="toggleOpenFilter('cloud')"><i class="fa fa-cloud fa-2x"></i><hbut id="string-cloud"> : 0% - 100%</hbut></button>
+                    <button id="season" type="button" class="btn btn-default filter-butt" onclick="toggleOpenFilter('season')"><i class="fa fa-sun-o fa-2x"></i></button>
+                </div>
+
+                <div id="main-filters">
+                    <div class="filter-date">
+                        <div id="dateSlider"></div>
+                    </div>
+                    <div class="filter-cloud display-none">
+                        <div id="cloudCoverSlider"></div>
+                    </div>
+                    <div class="filter-season display-none">
+                        <div id="seasonSlider"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+    <script src="/js/jquery.nouislider.all.min.js"></script>
+    <script src="/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="/js/jquery.beforeafter-map-2.02.min.js"></script>
+
+    <script src="/js/moment.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <script src="/js/spin.min.js"></script>
+
+    <script src="/js/leaflet.js"></script>
+    <script src="/js/leaflet.spin.js"></script>
+    <script src="/js/easy-button.js"></script>
+    <script src="/js/L.ImageTransform.js"></script>
+
+    <!--https://github.com/turban/Leaflet.Sync-->
+    <script src="/js/L.Map.Sync.js"></script>
+    <script src="/js/turf.min.js" charset="utf-8"></script>
+	<script src="/js/rpix_l8ba.js"></script>
+</body>
+</html>

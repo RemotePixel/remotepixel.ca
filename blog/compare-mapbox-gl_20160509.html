@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Blog - Mapbox GL map comparison">
+	<meta name="author" content="Vincent Sarago for RemotePixel.ca">
+    <meta name="twitter:title" content="Blog - Mapbox GL map comparison" />
+    <meta name="twitter:site" content="@RemotePixel" />
+    <meta name="twitter:description" content="Blog - Mapbox GL map comparison" />
+
+	<title>Blog - Mapbox GL map comparison</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_general.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_blogpost.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60678866-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+<body id="page-top" data-target=".navbar-fixed-top">
+	<!-- Navigation -->
+	<nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-main-collapse">
+					<i class="fa fa-bars" style="color: #fff"></i>
+				</button>
+				<a class="navbar-brand page-scroll"
+					href="/blog/index.html#CompareGL"> <i
+                    class="fa fa-play-circle"></i> <span class="light">back to Blog</span></a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div
+				class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+					<li class="hidden"><a href="#page-top"></a></li>
+                    <li><a class="glyphicon glyphicon-home" href="/"></a></li>
+                    <li><a href="/projects/index.html">projects</a></li>
+                    <li><a href="/blog/index.html">Blog</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<a id="back-to-top" href="#page-top" class="display-none">
+	    <i class="fa fa-level-up"></i>
+	    back to top
+	</a>
+
+	<div class="post-content">
+		<div class="titre">
+			<h1>Using Mapbox-GL to Improve MODIS-VIIRS Imagery comparison</h1>
+        </div>
+
+        <div class="corps">
+			<p>After my first taste of GL in <a href="https://poster.remotepixel.ca">poster.remotepixel.ca</a>
+				 (<a href="https://remotepixel.ca/blog/poster-mapbox-gl_20160424.html">blog</a>) I decided to update some of my previous projects.
+			</p>
+
+			<p>Last week I used a lot the <a href="https://remotepixel.ca/blog/modis-viirs-20151218.html">MODIS-VIIRS before/after map</a>
+				project to see the evolution of the Fort McMurray fire and I feeled this project needed some updates/improvements.
+				Using Mapbox-gl able a better navigation in the map and using their <a href="https://www.mapbox.com/mapbox-gl-js/example/mapbox-gl-compare/">Compare Tool</a> make the project really robust on all browsers.
+			</p>
+			<p>So here it is: <a href="https://remotepixel.ca/projects/viirsmodis_compare.html">MODIS-VIIRS map compare</a></p>
+			<p>I hope you'll like the new version. if you see anything that could be improved please contact me <a href="mailto:contact@remotepixel.ca"> contact@remotepixel.ca</a></p>
+
+			<titre-img>Fort McMurray fire evolution between May 2nd and 6th</titre-img>
+			<iframe frameborder="0" width="100%" height="360" src="https://remotepixel.ca/projects/viirsmodis_compare_emb.html?leftmap=VIIRS_SNPP_CorrectedReflectance_BandsM11-I2-I1&rightmap=VIIRS_SNPP_CorrectedReflectance_BandsM11-I2-I1&leftdate=2016-05-02&rightdate=2016-05-06&latlngZ=[56.7538415751786,-111.06084309531812,8]&angle=0"></iframe>
+
+			<p>I'm really thankful to <a href="https://www.mapbox.com" target="_blank">Mapbox</a> for develloping such amazing libraries.</p>
+
+        </div>
+
+	    <ul class="info-blogpost">
+		    <li>Date: May 2016</li>
+			<li>Category: VIIRS-MODIS / Mapbox-GL</li>
+		</ul>
+
+        <!-- Footer -->
+        <footer style="padding-top:10px">
+            <div class="text-center">
+                <a id="twitter" class="sharebutt" href="" title="Share on Twitter" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <a id="linkedin" class="sharebutt" href="" title="Share on LinkedIn" target="_blank">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+
+                <a id="facebook" class="sharebutt" href="" title="Share on Facebook" target="_blank">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </div>
+        </footer>
+
+	</div> <!-- /post-content -->
+
+	<!-- jQuery -->
+	<script src="/js/jquery.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/js/bootstrap.min.js"></script>
+
+	<!-- general Theme JavaScript -->
+	<script src="/js/rpix_blogpost.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            $("#twitter").attr('href','http://twitter.com/share?text=' + document.title.replace('|', '%7C') + '&url=' + window.location.href + '&via=RemotePixel');
+            $("#linkedin").attr('href','http://www.linkedin.com/shareArticle?mini=true&url=' + window.location.href + '&title='+ document.title + '&source=https://remotepixel.ca');
+            $("#facebook").attr('href','https://www.facebook.com/sharer/sharer.php?u=' + window.location.href);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+User-agent: *
+Disallow: /*.gif$
+Disallow: /*.png$
+Disallow: /css/
+Disallow: /js/
+Disallow: /font-awesome/
+Disallow: /fonts/
+Disallow: /data/
+Disallow: /images/
+Disallow: /img/
+Disallow: /mapbox/
+Disallow: /less/
+Disallow: /weather-icons/
+Disallow: /blog/data/
+Disallow: /blog/js/
+Disallow: /blog/img/
+Disallow: /projects/data/
+Disallow: /projects/img/
+Disallow: /borkenmapbox.html
+User-agent: Twitterbot
+Disallow:

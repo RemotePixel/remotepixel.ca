@@ -1,0 +1,215 @@
+/*!
+ * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+.intro {
+	position: relative;
+	display: table;
+	width: 100%;
+	height: 100%;
+	min-height: 400px;
+	padding-top: 50px;
+	text-align: center;
+	color: #fff;
+	background: url(/img/L8Caspian.jpg) no-repeat bottom center scroll;
+	background-color: #000;
+	background-position: center;
+    background-size: cover;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+}
+
+.intro .intro-body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.intro .intro-body .brand-heading {
+    font-size: 40px;
+}
+
+.intro .intro-body .intro-text {
+    font-size: 18px;
+}
+
+@media ( min-width :767px) {
+    .intro .intro-body .brand-heading {
+        font-size: 100px;
+    }
+    .intro .intro-body .intro-text {
+        font-size: 25px;
+    }
+    .intro .landsat_copyright {
+        font-size: 7px;
+    }
+}
+
+
+.head-info {
+    margin: 25px 0 20px;
+    text-align: center;
+    color: #000;
+}
+
+.head-info h5 {
+	margin: 5px 0 0;
+}
+
+.more-info {
+    margin-left: 50px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    text-align: left;
+    color: #000;
+}
+
+.more-info h5 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.more-info li {
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: none;
+}
+
+
+
+
+ul.d {
+	list-style-type: disc;
+	color: #fff;
+	align-text: center;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	font-style: italic;
+}
+
+h-caption {
+	text-transform: uppercase;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 700;
+	color: #000;
+}
+
+.text-muted {
+	color: #777;
+}
+
+.text-primary {
+	color: #fed136;
+}
+
+.portfolio-section {
+	padding-top: 0px;
+	background: rgba(255, 255, 255, 1);
+}
+
+#portfolio .portfolio-item {
+	magin-top: 15px;
+	margin-bottom: 15px;
+}
+
+#portfolio .portfolio-item .portfolio-link {
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	max-width: 400px;
+}
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background: rgba(200, 200, 200, .5);
+	-webkit-transition: all ease .5s;
+	-moz-transition: all ease .5s;
+	transition: all ease .5s;
+}
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
+	opacity: 1;
+}
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content
+	{
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	height: 20px;
+	margin-top: -12px;
+	text-align: center;
+	font-size: 20px;
+	color: #fff;
+}
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content i
+	{
+	margin-top: -12px;
+}
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content h3,
+	#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content h4
+	{
+	margin: 0;
+}
+
+#portfolio .portfolio-item .portfolio-caption {
+	margin: 0 auto;
+	padding: 25px;
+	max-width: 400px;
+	text-align: center;
+	background-color: #fff;
+	/*     border: solid 1px black; */
+}
+
+#portfolio .portfolio-item .portfolio-caption h4 {
+	margin: 0;
+	text-transform: none;
+}
+
+#portfolio .portfolio-item .portfolio-caption p {
+	margin: 0;
+	font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial,
+		sans-serif;
+	font-size: 16px;
+	font-style: italic;
+}
+
+#portfolio * {
+	z-index: 2;
+}
+
+@media ( min-width :767px) {
+	#portfolio .portfolio-item {
+		margin: 0 0 30px;
+	}
+}
+
+#map {
+	width: 100%;
+	height: 300px;
+	margin-top: 50px;
+}
+
+#leaflet_pop {
+	color: #222;
+	text-align: center;
+	background-color: #fff;
+}
+
+@media ( min-width :767px) {
+	#map {
+		height: 300px;
+		margin-top: 25px;
+	}
+}
+
+::selection {
+	text-shadow: none;
+	color: #FFF;
+	background: #000;
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="robots" content="index">
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+	<meta name="description" content="Remotepixel Satellite NDVI Series tools for Sentinel-2 and Landsat-8">
+	<meta name="author" content="Vincent Sarago for RemotePixel.ca">
+	<meta name="keywords" content="Sentinel, Landsat, AWS Lambda, NDVI">
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@RemotePixel" />
+	<meta name="twitter:title" content="Landsat 8/Sentinel 2 ndvi series" />
+	<meta name="twitter:description" content="Remotepixel Satellite NDVI Series tools for Sentinel-2 and Landsat-8"/>
+	<meta name="twitter:creator" content="@_VincentS_" />
+	<meta name="twitter:image:src" content="https://remotepixel.ca/projects/img/prev_ndvi.jpg" />
+
+	<meta property="og:title" content="Landsat 8/Sentinel 2 ndvi series" />
+	<meta property="og:url" content="https://remotepixel.ca/projects/ndviseries.html" />
+	<meta property="og:image" content="https://remotepixel.ca/projects/img/prev_ndvi.jpg" />
+	<meta property="og:description" content="Remotepixel Satellite NDVI Series tools for Sentinel-2 and Landsat-8" />
+	<meta property="og:site_name" content="RemotePixel" />
+
+	<title>Remote Pixel | Landsat-8 / Sentinel-2 ndvi series</title>
+
+	<link href="/css/c3.min.css" rel="stylesheet">
+
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
+
+	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.4/mapbox-gl-draw.js'></script>
+	<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.4/mapbox-gl-draw.css' type='text/css' />
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_general.css" rel="stylesheet">
+  <link href="/css/rpix_ndvi.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!-- [if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif] -->
+
+ 	<script>
+ 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ 	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 	  ga('create', 'UA-60678866-1', 'auto');
+ 	  ga('send', 'pageview');
+	</script>
+
+</head>
+
+<body data-target=".navbar-fixed-top">
+    <!-- Navigation -->
+	<nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"><i class="fa fa-bars" style="color: #fff"></i></button>
+				<a class="navbar-brand page-scroll" href="/projects/index.html#new_ndvi">
+			    <i class="fa fa-play-circle"></i>
+			    <span class="light">back to Projects</span>
+		    </a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+          <li class="hidden"><a href="#page-top"></a></li>
+          <li><a class="glyphicon glyphicon-home" href="/"></a></li>
+          <li><a href="/projects/index.html">projects</a></li>
+          <li><a href="/blog/index.html">Blog</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<div class="content">
+
+		<div id="rpixAPI" class="h4noim display-none">
+			<h4>Sat-api failed to respond</h4>
+		</div>
+
+		<div id="noL8" class="h4noim display-none">
+			<h4>No Scene Available on this point</h4>
+		</div>
+
+		<div id="noNDVI" class="h4noim display-none">
+			<h4>No Scene Available for NDVI on this point</h4>
+		</div>
+
+		<div class="flex">
+			<div class="latlong display-none"><span></span></div>
+			<div id="map" class="map"></div>
+		</div>
+
+		<div class="chart">
+			<div class="close-chart" onclick="closechart()">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+			<div id="chart" class="chart-area"></div>
+		</div>
+
+		<div class="date-slider">
+		  <input type="range" min="0" max="100" value="0" class="slider" id="dateSlider">
+			<button id='play-pause' class='play-button' value="pause"><i class="fa fa-play"></i></button>
+			<span id='dateValue' class='date-info'></span>
+			<span id='satValue' class='sat-info'></span>
+		</div>
+
+		<!-- Spinner -->
+		<div class="handle_spin">
+			<div class="spin">
+				<img src="/img/satellite.png" class="img-responsive orbit">
+			</div>
+			<div class="info-process">
+				<span></span>
+			</div>
+		</div>
+	</div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    	<div class="modal-dialog">
+      	<div class="modal-content">
+
+					<div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" style="text-align:center; color:#000;">NDVI Series</h4>
+          </div>
+         	<div class="modal-body">
+      			<div class="hmodal-info">
+            <p>Ndvi Serie is a <strong>demo</strong> tool using AWS Lambda to process Landsat/Sentinel data on AWS</p>
+
+						<p><strong>How To:</strong></p>
+
+						<ol class="deci">
+              <li>Use the draw tool (top right) to select an area of interest (maximun of 1000km² for polygons)</li>
+              <li>Visualize NDVI value for all Landsat 8/Sentinel2 images</li>
+        		</ol>
+						<p>Filter is set to select images with less than 20% of cloud coverage (5% for polygons)</p>
+						<p>Images before 2015 may not be available for processing</p>
+						<p>NDVI is calculated from TOA (Top Of Atmosphere) reflectance values (no atmopheric correction)</p>
+						<p>RemotePixel API code available on <a href="https://github.com/RemotePixel/remotepixel-api" target="_blank">Github</a></p>
+            <p>Questions or comments to <a href="mailto:contact@remotepixel.ca">contact@remotepixel.ca</a></p>
+          </div>
+  			</div>
+      </div>
+    </div>
+  </div>
+    <!-- /.modal -->
+
+  <!-- jQuery -->
+	<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+
+  <script src="/js/moment.min.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/spin.min.js"></script>
+
+	<script src="/js/saveSvgAsPng.js"></script>
+
+	<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+	<script src="/js/d3.min.js" charset="utf-8"></script>
+	<script src="/js/c3.min.js"></script>
+	<script src="/js/rpix_ndvi.js"></script>
+</body>
+</html>

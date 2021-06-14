@@ -1,0 +1,253 @@
+body{
+    position:fixed;
+}
+
+.content {
+    padding-top: 50px;
+    height:100%;
+    width: 100%;
+}
+
+.row {
+    margin: 0px;
+    padding: 0px;
+}
+
+.main-container{
+    position: relative;
+    height:100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.left-wall{    
+    position: relative;
+    top: 0px;
+    left: 0px;
+    float: left;
+    height: 100%;
+    padding: 0px;
+    margin: 0px; 
+    background: #FFF;
+    z-index: 1;
+    text-align: center;
+    border: 5px solid #FFF;
+    border-radius: 3px;
+    overflow-y: hidden;
+    box-shadow: 0px 0px 0px 1px #777;
+}
+
+.sort {
+  width: 100%;
+  height: auto; 
+  padding: 5px 5px 5px 5px;
+  text-align: center;
+  background: #FFF;
+}
+
+#map {
+    position: relative;
+    height: 100%;
+    width: auto;
+    z-index: 1;
+}
+
+.col-overlay h6{
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+#landsat-wall{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 1;
+}
+
+#h4noim{
+    position: absolute;
+    top: 50%;
+    pointer-events: none;
+    text-align:center;
+    width: 100%;
+    z-index: 1000;
+}
+
+.img-thumb {
+    width:100%; 
+    height:100%;
+    opacity: 0;
+    z-index: 10;
+}
+
+.result-content {
+    position:  relative;
+    background: #FFF;
+    margin-top: 1px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.result-overlay{
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    color: white;
+    width: 100%;
+    text-align: left;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    letter-spacing: 1px;
+    z-index: 100;
+    
+    span{
+        padding-left: 5px;
+    }
+
+    div{
+        float: right;
+    }
+}
+
+@media ( max-width :767px) {
+    .result-overlay{
+        font-size: 10px;
+        font-weight: 200;
+    }
+}
+
+.img-thumb-modal {
+    width:70%;
+    margin-bottom:15px; 
+    height:auto;
+}
+
+.lazyloading {
+    opacity: 0;
+}
+
+.lazyloaded {
+    opacity: 1;
+    transition: opacity 100ms;
+    width:100%; 
+    height:auto;
+    margin-top: 2px;
+    border:1px solid #021a40;
+}
+
+.modal-body h6 {
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    text-align: left;
+    margin: 0 0 8px;
+    text-transform: none;
+    color: rgba(0, 0, 0, 1);
+    letter-spacing: 1px;
+    font-size: 10px;
+}
+       
+.hmodal-info {
+    font-family: Lora, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    text-align: left;
+    color: rgba(0, 0, 0, 1);
+    margin: 0 0 5px;
+    letter-spacing: 1px;
+    font-size: 10px;
+}
+
+.hmodal-info p{
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    text-align: left;
+    color: rgba(0, 0, 0, 1);
+    margin: 0 0 5px;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+ol.dec {
+    font-family: Lora, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    list-style-type: decimal;
+}
+
+ol li{
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+}
+
+ol li i{
+    border: 1px solid #000;
+    padding: 2px 2px 2px 2px;
+    border-radius: 3px !important;
+}
+
+.display-none {
+    display: none;
+}
+
+#date-butt{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    color: #FFF;
+    padding: 5px 10px 5px 10px;
+    font-size: 20px;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 3px !important;
+    border: 1px solid #FFF;
+    z-index: 1;
+}
+
+#date-butt:hover{
+    color: #000;
+    border: 1px solid #000;
+    background-color: rgba(255,255,255,0.4);
+}
+
+#button-sort-date, #button-sort-cloud{
+    display: inline;    
+}
+
+.btn {
+    text-transform: uppercase;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    border-radius: 0 !important;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out;
+}
+
+.btn-default {
+    border: 1px solid #000;
+    color: #000;
+    background: transparent;
+}
+
+.btn-default:hover, .btn-default:focus {
+    border: 1px solid #fff;
+    outline: 0;
+    color: #fff;
+    background-color: #000;
+}
+
+@media ( max-width :767px) {
+    .btn{
+        font-size: 10px;
+        
+    }
+}

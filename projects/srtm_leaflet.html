@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Easy download of SRTM 1 arc-second elevation data">
+	<meta name="author" content="Vincent Sarago">
+    <meta name="twitter:title" content="SRTM 1arc Tile Grabber" />
+    <meta name="twitter:site" content="@RemotePixel" />
+    <meta name="twitter:description" content="Easy download of SRTM 1 arc-second elevation data" />
+
+	<title>Remote Pixel | SRTM 1arc Tile Grabber</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- leaflet CSS -->
+	<link href="/css/leaflet.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_general.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet"
+		type="text/css">
+	<link
+		href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
+		rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+		rel="stylesheet" type="text/css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+
+	<style>
+
+        body{
+            position:fixed;
+        }
+
+        .content {
+            padding-top: 50px;
+            height:100%;
+            width: 100%;
+        }
+
+		#map {
+			width: 100%;
+			height: 100%;
+		}
+
+		#leaflet_pop {
+			color: #222;
+			width: 170px;
+			height: 240px;
+			text-align: center;
+			background-color: #fff;
+			margin: auto;
+		}
+
+		#leaflet_pop img {
+			max-width: 100%;
+			max-height: 100%%;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+        .hmodal-info {
+            font-family: Lora, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 700;
+            text-align: left;
+            color: rgba(0, 0, 0, 1);
+            margin: 0 0 5px;
+            letter-spacing: 1px;
+            font-size: 10px;
+        }
+
+        .hmodal-info p{
+            font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 100;
+            text-align: left;
+            color: rgba(0, 0, 0, 1);
+            margin: 0 0 5px;
+            letter-spacing: 1px;
+            font-size: 16px;
+        }
+
+        ol.dec {
+            font-family: Lora, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 1);
+            font-size: 16px;
+            list-style-type: decimal;
+        }
+
+        ol li{
+            font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 1);
+            font-size: 16px;
+        }
+
+
+	</style>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-60678866-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+
+<body data-target=".navbar-fixed-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars" style="color: #fff"></i></button>
+
+                <a class="navbar-brand page-scroll" href="/projects/index.html#srtmLeaf">
+                    <i class="fa fa-play-circle"></i>
+                    <span class="light">back to Projects</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden"><a href="#page-top"></a></li>
+                    <li><a class="glyphicon glyphicon-home" href="/"></a></li>
+                    <li><a href="/projects/index.html">projects</a></li>
+                    <li><a href="/blog/index.html">Blog</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="content">
+	   <div id="map"></div>
+	</div>
+
+   <!-- Modal -->
+    <div  id="modalShare" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="sharezone">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+            <a id="twitter" class="sharebutt" href="" title="Share on Twitter" target="_blank">
+                <i class="fa fa-twitter"></i>
+            </a>
+            <a id="linkedin" class="sharebutt" href="" title="Share on LinkedIn" target="_blank">
+                <i class="fa fa-linkedin"></i>
+            </a>
+            <a id="facebook" class="sharebutt" href="" title="Share on Facebook" target="_blank">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </div>
+    </div>
+    <!-- /.modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalAbout" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" style="text-align:center; color:#000;">SRTM 1arc Elevation</h4>
+                </div>
+                   <div class="modal-body">
+                        <div class="hmodal-info">
+                            <p>SRTM 1arc tile Grabber is a tool to visualize and donwload 1 arc-second elevation data from
+                             the <a href="http://www2.jpl.nasa.gov/srtm/" target="_blank">Shuttle Radar Topography Mission</a>.</p>
+
+                            <p>Questions or comments to <a href="mailto:vincent.sarago@gmail.com">vincent.sarago@gmail.com</a></p>
+
+                        </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+	<!-- jQuery -->
+	<script src="/js/jquery.js"></script>
+	<script src="/js/jquery.easing.min.js"></script>
+
+	<!-- Leaflet -->
+	<script src="/js/leaflet.js"></script>
+	<script src="/js/leaflet.spin.js"></script>
+    <script src="/js/easy-button.js"></script>
+
+	<!-- spin -->
+	<script src="/js/spin.min.js"></script>
+
+	<!-- d3 -->
+	<script src="/js/d3.min.js"></script>
+
+	<!-- queue -->
+	<script src="/js/queue.min.js"></script>
+
+	<!-- topojson -->
+	<script src="/js/topojson.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/js/bootstrap.min.js"></script>
+
+	<script>
+	    function onClickPoly() {
+	    	var mirror = 'http://e4ftl01.cr.usgs.gov/SRTM/SRTMGL1.003/2000.02.11/';
+	        var name =  this.Name;
+	        var file = mirror + name + '.SRTMGL1.hgt.zip';
+	        var quicklook = mirror + this.Quicklook;
+
+	        var html = '<div id="leaflet_pop">'+
+	                    '    You clicked tile <strong>' + name + '</strong>!<br>'+
+                        '    <img id="quicklook" src="'+ quicklook +'" class="img-thumbnail" style="width:100%; heigth:100%;">'+
+	                    '    <div>'+
+	                    '         <a id="tip_button" class="btn btn-small btn-success tip_button" href="' + file + '" target="_blank">Download SRTM Tile</a><br>'+
+	                    '    </div>'+
+	                    '</div>';
+
+	        var popup = L.popup({maxWidth: 512, maxHeight:512, keepInView:true})
+	            .setLatLng(this.getBounds().getCenter())
+	            .setContent(html)
+	            .openOn(map);
+	    };
+
+        function addToMap(error, obj) {
+            var data = topojson.object(obj, obj.objects.srtm).geometries;
+
+            var all_poly = [];
+            for (var i=0; i < data.length; i++){
+                var southWest = L.latLng(data[i].coordinates[0][0][1], data[i].coordinates[0][0][0]),
+                    northEast = L.latLng(data[i].coordinates[0][2][1], data[i].coordinates[0][2][0]),
+                    northWest = L.latLng(data[i].coordinates[0][1][1], data[i].coordinates[0][1][0]),
+                    southEast = L.latLng(data[i].coordinates[0][3][1], data[i].coordinates[0][3][0]);
+
+                var poly = L.polygon([northEast, northWest, southWest, southEast], defaultStyle)
+                    .on('mouseover', function () {this.setStyle(highlightStyle);})
+                    .on('mouseout', function () {this.setStyle(defaultStyle);})
+                    .on('click', onClickPoly);
+
+                poly.Name = data[i].properties.Name;
+                poly.Quicklook = data[i].properties.Quicklook;
+
+                all_poly.push(poly);
+            };
+
+            var SRTMgridLayer = new L.featureGroup(all_poly)
+                .addTo(map);
+
+            controlLayer.addOverlay(SRTMgridLayer, "SRTM Grid");
+
+            map.spin(false)
+        };
+
+        var map = L.map('map', {
+            center: [0, 0],
+            minZoom: 2,
+            maxZoom: 7,
+            zoomControl: false
+        });
+
+        map.spin(true);
+	    var osm_url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	    var attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+        var OpenStreetMap = L.tileLayer(osm_url, {id: 'MapID', attribution: attribution})
+                 .addTo(map);
+
+        var esri_url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}';
+        var attribution_esri = 'Tiles &copy; Esri &mdash; Source: Esri';
+        var Esri_WorldShadedRelief = L.tileLayer(esri_url, {id: 'MapID', attribution: attribution_esri, maxZoom: 13});
+
+        var defaultStyle = {
+                color: "#000",
+                weight: 0.15,
+                fill: true,
+                fillOpacity: 0,
+                opacity: 1
+        };
+
+        var highlightStyle = {
+                color: '#2262CC',
+                weight: 3,
+                opacity: 0.6,
+                fill: true,
+                fillOpacity: 0.65,
+                fillColor: '#2262CC'
+        };
+
+        var baseMaps = {
+		    "OpenStreetMap": OpenStreetMap,
+            "ESRI-Shaded" : Esri_WorldShadedRelief
+		};
+
+        L.control.zoom({position:'topright'}).addTo(map);
+        controlLayer = L.control.layers(baseMaps, '', {position:'bottomright'}).addTo(map);
+
+        L.easyButton('fa-home',
+                function (){
+                    map.fitWorld();
+                },
+                'Reset');
+
+        L.easyButton('fa-share',
+                function (){
+                    $("#twitter").attr('href','https://twitter.com/share?text=SRTM 1Arc Tile Grabber&url=' + window.location.href + '&via=RemotePixel&hashtags=OpenData');
+                    $("#linkedin").attr('href','https://www.linkedin.com/shareArticle?mini=true&url=' + window.location.href + '&title='+ document.title + '&source=https://remotepixel.ca');
+                    $("#facebook").attr('href','https://www.facebook.com/sharer/sharer.php?u=' + window.location.href);
+                    $('#modalShare').modal();
+                },
+                'Share it');
+
+        L.easyButton('fa-info',
+            function (){
+               $('#modalAbout').modal()
+            },
+            'About');
+
+        map.fitWorld();
+
+        $( document ).ready(function() {
+            queue()
+            //.defer(d3.json, 'data/srtm.json')
+            .defer(d3.json, '/projects/data/srtm.json')
+            .await(addToMap);
+        });
+
+    </script>
+</body>
+</html>

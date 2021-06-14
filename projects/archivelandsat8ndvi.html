@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Landsat 8 ndvi series">
+	<meta name="author" content="Vincent Sarago">
+    <meta name="twitter:title" content="Landsat 8 ndvi series" />
+    <meta name="twitter:site" content="@RemotePixel" />
+    <meta name="twitter:description" content="Landsat 8 ndvi series" />
+
+	<title>Remote Pixel | Landsat 8 ndvi series</title>
+
+	<link href="/css/c3.min.css" rel="stylesheet">
+
+  <!-- leaflet CSS -->
+  <link href="/css/leaflet.css" rel="stylesheet">
+  <link href="/css/leaflet.draw.css" rel="stylesheet">
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_general.css" rel="stylesheet">
+  <link href="/css/rpix_landsatndvi.min.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+
+ 	<script>
+   	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+   	  ga('create', 'UA-60678866-1', 'auto');
+   	  ga('send', 'pageview');
+	</script>
+
+</head>
+
+<body data-target=".navbar-fixed-top">
+    <!-- Navigation -->
+	<nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars" style="color: #fff"></i></button>
+
+				<a class="navbar-brand page-scroll" href="/projects/index.html#l8ndvi">
+				    <i class="fa fa-play-circle"></i>
+				    <span class="light">back to Projects</span>
+			    </a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden"><a href="#page-top"></a></li>
+                    <li><a class="glyphicon glyphicon-home" href="/"></a></li>
+                    <li><a href="/projects/index.html">projects</a></li>
+                    <li><a href="/blog/index.html">Blog</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<div class="content">
+
+		<div id="rpixAPI" class="h4noim display-none">
+			<h4>Landsat API failed to respond</h4>
+		</div>
+
+		<div id="noL8" class="h4noim display-none">
+			<h4>No Landsat 8 Image Available on this point</h4>
+		</div>
+
+		<div id="noNDVI" class="h4noim display-none">
+			<h4>No Landsat 8 Available for NDVI on this point</h4>
+		</div>
+
+		<div class="flex">
+
+			<div class="latlong display-none">
+				<span></span>
+			</div>
+			<div id="map" class="map"></div>
+		</div>
+		<div class="chart">
+			<div class="close-chart" onclick="closechart()">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+			<div id="chart" class="chart-area">
+		</div>
+	</div>
+
+	<!-- Spinner -->
+	<div class="handle_spin">
+		<div class="spin">
+			<img src="/img/satellite.png" class="img-responsive orbit">
+		</div>
+		<div class="info-process">
+			<span></span>
+		</div>
+	</div>
+
+   <!-- Modal -->
+    <div  id="modalShare-bottom" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="sharezone-bottom">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+            <a id="twitter" class="sharebutt" href="" title="Share on Twitter" target="_blank">
+                <i class="fa fa-twitter"></i>
+            </a>
+            <a id="linkedin" class="sharebutt" href="" title="Share on LinkedIn" target="_blank">
+                <i class="fa fa-linkedin"></i>
+            </a>
+            <a id="facebook" class="sharebutt" href="" title="Share on Facebook" target="_blank">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </div>
+    </div>
+    <!-- /.modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalAbout" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" style="text-align:center; color:#000;">Landsat 8 ndvi</h4>
+                </div>
+                   <div class="modal-body">
+                        <div class="hmodal-info">
+	                        <p>Landsat 8 ndvi is a demo tool for using Landsat data on AWS</p>
+
+							<ol class="deci">
+	                            <li>Use the draw tool (top right) to pin on an area of interest</li>
+                                <li>Visualize NDVI value for all Landsat 8 images</li>
+			                </ol>
+
+							<p>Filter is set to select images with less than 20% of cloud coverage</p>
+							<p>Landsat 8 images before 2015 may not be available for processing</p>
+
+							<p>NDVI is calculated from TOA (Top Of Atmosphere) reflectance values (no atmopheric correction)</p>
+
+                            <p>Search results are powered by <a href="https://api.remotepixel.ca/landsat" target="_blank">RemotePixel Landsat API</a></p>
+
+		                    <p>Questions or comments to <a href="mailto:contact@remotepixel.ca">contact@remotepixel.ca</a></p>
+
+                        </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+	<!-- d3 JavaScript -->
+	<!-- <script src="https://d3js.org/d3-queue.v2.min.js"></script> -->
+	<!-- <script src="//d3js.org/d3.v4.0.0-alpha.11.min.js"></script> -->
+
+  <!-- jQuery -->
+  <script src="/js/jquery.js"></script>
+  <script src="/js/jquery.easing.min.js"></script>
+
+  <script src="/js/moment.min.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/spin.min.js"></script>
+
+  <script src="/js/leaflet.js"></script>
+  <script src="/js/leaflet.spin.js"></script>
+  <script src="/js/leaflet.draw-src.js"></script>
+	<script src="/js/easy-button_br.js"></script>
+	<script src="/js/turf.min.js"></script>
+	<script src="/js/d3.min.js" charset="utf-8"></script>
+	<script src="/js/c3.min.js"></script>
+	<script src="/js/rpix_l8ndvi.js"></script>
+</body>
+</html>

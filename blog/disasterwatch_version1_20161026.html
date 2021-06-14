@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="Announcing DisasterWatch version 1.0">
+	<meta name="author" content="Vincent Sarago">
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@RemotePixel" />
+	<meta name="twitter:title" content="Blog | Announcing DisasterWatch version 1.0" />
+	<meta name="twitter:description" content="Blog | Announcing DisasterWatch version 1.0" />
+	<meta name="twitter:creator" content="@_VincentS_" />
+	<meta name="twitter:image:src" content="https://remotepixel.ca/blog/img/prev_disasterwatch.jpg" />
+
+	<meta property="og:title" content="Blog | Announcing DisasterWatch version 1.0" />
+	<meta property="og:url" content="https://remotepixel.ca/blog/disasterwatch_version1_20161026.html" />
+	<meta property="og:image" content="https://remotepixel.ca/blog/img/prev_disasterwatch.jpg" />
+	<meta property="og:description" content="Blog | Announcing DisasterWatch version 1.0" />
+	<meta property="og:site_name" content="Remote Pixel" />
+
+	<title>Blog | Announcing DisasterWatch version 1.0</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_general.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/rpix_blogpost.min.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	<style>
+		.topimage {
+		    background: url(/img/alaska2.jpg) no-repeat bottom center scroll;
+		    background-position: center;
+		    background-size: cover;
+		        -webkit-background-size: cover;
+		        -moz-background-size: cover;
+		        -o-background-size: cover;
+		}
+		.post-content{
+			padding-top: 15px;
+		}
+
+		.icon {
+		    display: inline-block;
+		    height: 60px;
+		    width: 60px;
+		    line-height: 60px;
+		    text-align: center;
+		    vertical-align: middle;
+			-webkit-transition: all .2s ease;
+			-moz-transition: all .2s ease;
+			-o-transition: all .2s ease;
+			-ms-transition: all .2s ease;
+			transition: all .2s ease;
+		}
+
+		.icon:hover {
+			-webkit-transition: all .2s ease;
+			-moz-transition: all .2s ease;
+			-o-transition: all .2s ease;
+			-ms-transition: all .2s ease;
+			transition: all .2s ease;
+			transform: scale(1.1)
+			rotate(20deg);
+		}
+
+		.fire {
+		    content: url('/blog/img/disasterwatch_20161026/fire.svg');
+		}
+
+		.earthquake {
+		    content: url('/blog/img/disasterwatch_20161026/earthquake.svg');
+		}
+
+		.tsunami {
+		    content: url('/blog/img/disasterwatch_20161026/tsunami.svg');
+		}
+
+		.weather {
+		    content: url('/blog/img/disasterwatch_20161026/weather.svg');
+		}
+
+		.tornado {
+		    content: url('/blog/img/disasterwatch_20161026/tornado.svg');
+		}
+
+		.volcano {
+		    content: url('/blog/img/disasterwatch_20161026/volcano.svg');
+		}
+
+		.floods {
+		    content: url('/blog/img/disasterwatch_20161026/floods.svg');
+		}
+
+		.sandstorm {
+		    content: url('/blog/img/disasterwatch_20161026/sandstorm.svg');
+		}
+
+		.landslide {
+		    content: url('/blog/img/disasterwatch_20161026/landslide.svg');
+		}
+
+		.manmade {
+		    content: url('/blog/img/disasterwatch_20161026/manmade.svg');
+		}
+
+		.avalanche {
+		    content: url('/blog/img/disasterwatch_20161026/avalanche.svg');
+		}
+
+		.disease {
+		    content: url('/blog/img/disasterwatch_20161026/disease.svg');
+		}
+
+		.other {
+		    content: url('/blog/img/disasterwatch_20161026/other.svg');
+		}
+
+	</style>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60678866-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+
+<body id="page-top" data-target=".navbar-fixed-top">
+	<!-- Navigation -->
+	<nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-main-collapse">
+					<i class="fa fa-bars" style="color: #fff"></i>
+				</button>
+				<a class="navbar-brand page-scroll"
+					href="/blog/index.html#disasterwatchV1"> <i
+                    class="fa fa-play-circle"></i> <span class="light">back to Blog</span></a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div
+				class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+					<li class="hidden"><a href="#page-top"></a></li>
+					<li><a class="glyphicon glyphicon-home" href="/"></a></li>
+                    <li><a href="/projects/index.html">projects</a></li>
+                    <li><a href="/blog/index.html">Blog</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+    <a id="back-to-top" href="#page-top" class="display-none">
+        <i class="fa fa-level-up"></i>
+        back to top
+    </a>
+
+	<div class="entete-blog topimage">
+		<div class="titre">
+		    <h1>DisasterWatch</h1>
+        </div>
+		<div class="landsat_copyright">
+			&copy; Landsat imagery courtesy of NASA Goddard Space Flight<br>
+			Center and U.S. Geological Survey
+		</div>
+	</div>
+
+	<div class="post-content">
+        <div class="corps">
+			<p>More than a year and a half ago I launched RemotePixel
+				because I felt there was something to do to help people access
+				and play with satellite imagery. Today I'm proud to anounce the release of <a href="https://disasterwatch.remotepixel.ca" target="_blank"> DisasterWatch</a> my lastest and most advanced project.</p>
+
+			<h5>History</h5>
+			<p>Last December I had a project idea but at this time I really
+				though I hadn't all the knowledge and skills needed to build it by myself so I asked here for help (<a href="/blog/disasterwatch-20151231.html" target="_blank">blog post</a>).
+				Sadly at that time I was waiting for the <a href="https://poster.remotepixel.ca" target="_blank">Poster project</a>
+				official release and also in a proccess to change job. This made me to postpone the real start for the project.
+				After changing job again, I finally had time to work on it and with skills and knowledge learned
+				for Satellite Search and other RemotePixel's projects I was confident for doing most of it.
+			</p>
+
+			<h5>Crowdsourcing disaster event</h5>
+			<p>If you follow RemotePixel on twitter/facebook you may have seen
+				that in addition of building tools I offen post satellite images over "disasters": </p>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Possible Oil spill in Golf of Mexico <a href="https://twitter.com/hashtag/Sentinel2?src=hash">#Sentinel2</a> image from yesterday! cc <a href="https://twitter.com/SkyTruth">@SkyTruth</a> <a href="https://t.co/gQ0QPiNhec">pic.twitter.com/gQ0QPiNhec</a></p>&mdash; Remote Pixel (@RemotePixel) <a href="https://twitter.com/RemotePixel/status/767926687946321920">August 23, 2016</a></blockquote>
+				</div>
+				<div class="col-sm-6">
+					<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">July 11th 2016 Sentinel-2 Image over Glacier Bay, AK massive landslide! <a href="https://t.co/pTnHQ7el8G">pic.twitter.com/pTnHQ7el8G</a></p>&mdash; Remote Pixel (@RemotePixel) <a href="https://twitter.com/RemotePixel/status/753724806403678208">July 14, 2016</a></blockquote>
+				</div>
+			</div>
+
+			<p>Twitter is my main source of info to find places where I should
+				look for imagery. Usually for fire, eruptions or environmental
+				crisis I'm trying to publish how it's look like from space with
+				the idea of <i>'if people can see it, they will care about'</i>.
+			</p>
+
+			<p>In addition some websites trying to reference every natural/man-made disasters:</p>
+			<ul>
+				<li><a href="http://disasterwatch.sgs-suparco.gov.pk" target="_blank">http://disasterwatch.sgs-suparco.gov.pk</a></li>
+				<li><a href="http://globaldisasterwatch.blogspot.ca" target="_blank">http://globaldisasterwatch.blogspot.ca</a></li>
+				<li><a href="http://www.gdacs.org" target="_blank">http://www.gdacs.org</a></li>
+				<li><a href="https://elispiritweaver.wordpress.com" target="_blank">https://elispiritweaver.wordpress.com</a></li>
+				<li><a href="http://reliefweb.int/disasters" target="_blank">http://reliefweb.int/disasters</a></li>
+				<li><a href="https://geohazards-tep.eo.esa.int/#!" target="_blank">https://geohazards-tep.eo.esa.int/#!</a></li>
+				<li>...</li>
+			</ul>
+
+			<p>Trying to map every event is an impossible task... but letting people
+				add their own event is much more easy and useful regarding user needs (event scale, location, ...).</p>
+
+			<p>That's the origin of the idea. I wanted a tool that able me (and anyone)
+				to monitor event they whant, find latest images on the area and get notification when new images are available.</p>
+
+			<h5>Landsat-8, Sentinel-2 and Sentinel-1</h5>
+
+			<p>As usual Landsat-8/Sentinel-2 images search is based on the great <a href="https://github.com/sat-utils/sat-api" target="_blank">sat-api</a>
+				by DevelopmentSeed but as a former geologist specialized in Radar Interferometry
+				I really wanted to add the Sentinel-1 data search that could really be useful for event like earthquake, eruption or oil spill.</p>
+
+			<p>I'm really happy with the result and I hope you are going to love it. Use it to
+				add event to database, simply search for images or subscribe to event
+				to get notification of new available images.</p>
+
+			<img class="img-responsive" src="img/disasterwatch_20161026/addToDB.gif">
+			<titre-img>Disasterwatch</titre-img>
+
+			<h5>What next</h5>
+
+			<p>Up to now, you can search for Landsat-8 and Sentinel-2 optical images or Sentinel-1 Radar data but I'll try to add more sources in the next couple month.</p>
+			<p>If you feel there is something missing or that can be done better please create a ticket or contribute directly on <a href="https://github.com/RemotePixel/disasterwatch" target="_blank">Github</a><p>
+
+			<h5>Thanks</h5>
+			<p>Special thanks to <a href="https://twitter.com/CodeMacabre" target="_blank">@CodeMacabre</a>
+				for designing awesome icons for each event.</p>
+
+			<div class="row">
+				<div title="avalanche" class="icon avalanche"></div>
+				<div title="disease" class="icon disease"></div>
+				<div title="earthquake" class="icon earthquake"></div>
+				<div title="fire" class="icon fire"></div>
+				<div title="floods" class="icon floods"></div>
+				<div title="landslide" class="icon landslide"></div>
+				<div title="manmade" class="icon manmade"></div>
+				<div title="other" class="icon other"></div>
+				<div title="sandstorm" class="icon sandstorm"></div>
+				<div title="tornado" class="icon tornado"></div>
+				<div title="tsunami" class="icon tsunami"></div>
+				<div title="volcano" class="icon volcano"></div>
+				<div title="weather" class="icon weather"></div>
+			</div>
+			<titre-img>Events icons designed by <a href="http://codemacabre.com" target="_blank">CodeMacabre</a></titre-img>
+
+			<p>Another ✋ goes to <a href="http://www.mapsmith.net" target="_blank">Stephen Smith</a> and <a href="http://thespatialcommunity.com" target="_blank">the spatial community</a> on slack for beta testing the platform.</p>
+			<img class="img-responsive" src="img/disasterwatch_20161026/cat.jpg">
+			<titre-img>cat event</titre-img>
+
+
+			<p>As usual I would like also to thanks <a href="" target="_blank">Mapbox</a>
+				 and <a href="https://developmentseed.org" target="_blank">DevelopmentSeed</a> for their support and help.</p>
+
+			<h5>Links</h5>
+			<li>Disasterwatch project (<a href="https://disasterwatch.remotepixel.ca" target="_blank">link</a>)</li>
+			<li>Github project (<a href="https://github.com/RemotePixel/disasterwatch" target="_blank">link</a>)</li>
+		</div>
+
+	    <ul class="info-blogpost">
+		    <li>Date: October 2016</li>
+			<li>Category: Monitoring / New Project</li>
+		</ul>
+
+        <!-- Footer -->
+        <footer>
+            <div class="text-center">
+                <a id="twitter" class="sharebutt" href="" title="Share on Twitter" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <a id="linkedin" class="sharebutt" href="" title="Share on LinkedIn" target="_blank">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+
+                <a id="facebook" class="sharebutt" href="" title="Share on Facebook" target="_blank">
+                    <i class="fa fa-facebook"></i>
+                </a>
+
+            </div>
+        </footer>
+
+	</div> <!-- /post-content -->
+
+	<!-- jQuery -->
+	<script src="/js/jquery.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+
+	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/js/bootstrap.min.js"></script>
+
+	<!-- general Theme JavaScript -->
+	<script src="/js/rpix_blogpost.js"></script>
+    <script>
+        $( document ).ready(function() {
+            $("#twitter").attr('href','http://twitter.com/share?text=' + document.title.replace('|', '%7C') + '&url=' + window.location.href + '&via=RemotePixel');
+            $("#linkedin").attr('href','http://www.linkedin.com/shareArticle?mini=true&url=' + window.location.href + '&title='+ document.title + '&source=https://remotepixel.ca');
+            $("#facebook").attr('href','https://www.facebook.com/sharer/sharer.php?u=' + window.location.href);
+        });
+    </script>
+
+</body>
+</html>
