@@ -4,39 +4,35 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Earth Observation for everyone">
+	<meta name="description" content="When Remote Sensing meets WebMapping">
 	<meta name="author" content="Vincent Sarago">
-
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content="@RemotePixel" />
-	<meta name="twitter:title" content="RemotePixel.ca" />
-	<meta name="twitter:description" content="Earth Observation for everyone" />
-	<meta name="twitter:creator" content="@_VincentS_" />
-	<meta name="twitter:image:src" content="https://remotepixel.ca/img/rpix_preview.jpg" />
-
-	<meta property="og:title" content="RemotePixel" />
-	<meta property="og:url" content="https://remotepixel.ca/" />
-	<meta property="og:image" content="https://remotepixel.ca/img/rpix_preview.jpg" />
-	<meta property="og:description" content="Earth Observation for everyone" />
-	<meta property="og:site_name" content="RemotePixel.ca" />
 
     <link rel="icon" type="image/icon" href="favicon.ico" />
 
-	<title>Remote Pixel | Home</title>
+    <!-- Twitter Cards -->
+	<meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Remote Pixel" />
+    <meta name="twitter:site" content="@RemotePixel" />
+    <meta name="twitter:creator" content="@_VincentS_">
+    <meta name="twitter:description" content="When remote sensing meets Web-Mapping" />
+    <meta property="og:url" content="https://remotepixel.ca/" />
+	<meta name="twitter:image" content="https://remotepixel.ca/img/anticosti.jpg" />
+
+	<title>Remote Pixel | Thanks</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Custom CSS -->
-	<link href="/css/rpix_general.min.css" rel="stylesheet">
+	<link href="/css/rpix_general.css" rel="stylesheet">
 
 	<!-- Custom CSS -->
-	<link href="/css/rpix_landing.min.css" rel="stylesheet">
+	<link href="/css/rpix_landing.css" rel="stylesheet">
 
-	<!-- Custom Fonts -->
+    <!-- Custom Fonts -->
 	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,197 +41,95 @@
 	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-		ga('create', 'UA-60678866-1', 'auto');
-		ga('send', 'pageview');
-	</script>
+			ga('create', 'UA-60678866-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+
+	<style>
+		.intro {
+		    position: relative;
+		    display: table;
+		    width: 100%;
+		    height: 100%;
+		    min-height: 400px;
+		    text-align: center;
+			background-color: rgba(0, 0, 0, 0.3);
+		}
+
+		.intro .intro-body {
+		    display: table-cell;
+		    vertical-align: middle;
+		}
+
+		.intro .intro-body .brand-heading {
+		    font-size: 40px;
+		}
+
+		.intro .intro-body .intro-text {
+		    font-size: 18px;
+		}
+
+		.credits a{
+		    color: #000;
+			font-size:  12px;
+		}
+
+		body{
+			position: fixed;
+		}
+
+		.fond {
+		    background: url(../img/alaska.jpg) no-repeat bottom center scroll;
+		    -webkit-background-size: cover; /* For WebKit*/
+		    -moz-background-size: cover;    /* Mozilla*/
+		    -o-background-size: cover;      /* Opera*/
+		    background-size: cover;
+		}
+
+		@media(max-height: 400px) {
+			body{
+				position: relative;
+			}
+		}
+	</style>
 
 </head>
 
 <!-- data-spy="scroll"  -->
-<body id="page-top" data-target=".navbar-fixed-top">
-
-	<!-- Navigation -->
-	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-main-collapse">
-					<i class="fa fa-bars"></i>
-				</button>
-				<a id="back-to-top" class="navbar-brand page-scroll display-none" href="#page-top">
-			    <i class="fa fa-play-circle"></i>
-					<span class="light">back to top</span>
-		    </a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div
-				class="collapse navbar-collapse navbar-right navbar-main-collapse">
-				<ul class="nav navbar-nav">
-					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-					<li class="hidden"><a href="#page-top"></a></li>
-					<li><a class="glyphicon glyphicon-home" href="#page-top"></a></li>
-					<li><a href="/projects/index.html">projects</a></li>
-					<li><a href="/blog/index.html">Blog</a></li>
-					<li><a href="/contact.html">Contact</a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container -->
-	</nav>
-
+<body id="page-top">
 	<!-- Intro Header -->
-	<header class="intro section" style="background: url(/img/blm.png)">
+	<header class="intro section fond">
 		<div class="intro-body">
-			<div class="container">
+			<div class="container ">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
-						<h1 class="brand-heading">Black lives matter</h1>
-						<h2 class="intro-text">Because Earth Observation is less important than Human lives</h2>
+						<h1 class="brand-heading">The End</h1>
+						<p>After years of living it's time for RemotePixel.ca to close.</p>
+						<p>I cannot be more proud of this journey. RPix was fun to built and fun to see beeing used by hundreds of people
+							accross the world. Today RemotePixel is aging... and not well, I personaly don't have time to maintain or update its broken parts.</p>
+
+						<p>THANKS / MERCI</p>
+						<h2 class="intro-text"><a href="mailto:contact@remotepixel.ca">contact@remotepixel.ca</a></h2>
 					</div>
 				</div>
-	
-				<a href="#projects" class="btn btn-circle page-scroll">
-					<i class="fa fa-angle-double-down animated"></i>
-				</a>
-	
+			</div>
+			<div class="landsat_copyright">
+				&copy; Landsat imagery courtesy of NASA Goddard Space Flight<br>
+				Center and U.S. Geological Survey
 			</div>
 		</div>
 	</header>
 
-	<!-- <header class="intro section">
-		<div class="intro-body">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<h1 class="brand-heading">Remote Pixel</h1>
-						<h2 class="intro-text">Earth Observation For everyone</h2>
-						<h4 class="small">Since 2015</h4>
-					</div>
-				</div>
-
-				<a href="#projects" class="btn btn-circle page-scroll">
-					<i class="fa fa-angle-double-down animated"></i>
-				</a>
-
-			</div>
-      <div class="landsat_copyright">
-            Sentinel-2A &copy; Copernicus / ESA 2016
-      </div>
-    </div>
-	</header> -->
-
-	<div id="projects" class="section-land">
-		<h2 class="section-land-heading">Popular Projects</h2>
-		<div class="row text-center">
-
-			<!--disasterwatch-->
-			<div id="viewer" class="col-xs-6 col-sm-4 col-lg-4 col-xl-4 portfolio-item">
-				<a href="https://viewer.remotepixel.ca" target="_blank" class="portfolio-link">
-					<div class="portfolio-hover"></div>
-					<img src="/projects/img/prev_viewer.jpg" class="img-responsive" alt="">
-					<div class="portfolio-caption">
-						<p class="text-muted">RemotePixel viewer</p>
-					</div>
-				</a>
-			</div>
-
-			<!--Sat Search-->
-			<div id="satsearch" class="col-xs-6 col-sm-4 col-lg-4 col-xl-4 portfolio-item">
-				<a href="https://search.remotepixel.ca" target="_blank" class="portfolio-link">
-					<div class="portfolio-hover"></div>
-					<img src="/projects/img/prev_search.jpg" class="img-responsive" alt="">
-					<div class="portfolio-caption">
-						<p class="text-muted">Satellite Search</p>
-					</div>
-				</a>
-			</div>
-
-			<div id="poster" class="col-xs-12 col-sm-4 col-lg-4 col-xl-4 portfolio-item">
-				<a href="https://disasterwatch.remotepixel.ca" target="_blank" class="portfolio-link">
-					<div class="portfolio-hover"></div>
-					<img src="/projects/img/prev_disasterwatch.jpg" class="img-responsive" alt="">
-					<div class="portfolio-caption">
-						<p class="text-muted">Disasterwatch</p>
-					</div>
-				</a>
-			</div>
-
-		</div>
-		<div class="section-land-footer">
-			<span><strong>One, two, three clicks...</strong></span>
-			<span>RemotePixel aim to create simple project to
-				`Access, Use, Share` Satellite imagery </span>
-		</div>
-	</div>
-
-	<div id="blog" class="section-land">
-		<h2 class="section-land-heading">Latest Blog</h2>
-
-		<div class="row section-land-blog">
-			<div class="col-xs-6 col-sm-4 col-lg-4 col-xl-4">
-					<img src="/blog/img/searchapi_20171211/landsat_grid.jpg" class="img-responsive" alt="">
-			</div>
-			<div class="col-xs-12 col-sm-8 col-lg-8 col-xl-8">
-				<div class="blogtitle">Search API - 2017/12/10</div>
-
-				<p>Introducing Search API, a simple API to search for Landsat and Sentinel data on AWS.</p>
-
-				<p>While I tried to work on sat-api, I realised that project like <a href="https://remotepixel.ca/projects/satellitesearch.html" target="_blank">Satellite Search</a>
-					or <a href="https://viewer.remotepixel.ca" target="_blank">Viewer</a> didn't need to do spatial requests.
-					Those projects are based on Vector tiles + Mapbox-gl-js to help the user selects the Landsat or Sentinel `grid`
-					they want images from, then I'm calling sat-api giving the grid information.</p>
-
-				<p>On AWS, Landsat and Sentinel images are stored by their grid information, so it's `easy` to get the list of files for each grid selected!</p>
-				<p>...</p>
-				<a href="/blog/searchapi_20171211.html">Read More</a>
-			</div>
-		</div>
-	</div>
-
-	<div class="footer back-grey">
-		<div class="footer-content">
-			<div class="bottom-left-button">
-				<a id="twitter" class="sharebutt" href="" title="Share on Twitter" target="_blank">
-						<i class="fa fa-twitter"></i>
-				</a>
-
-				<a id="linkedin" class="sharebutt" href="" title="Share on LinkedIn" target="_blank">
-						<i class="fa fa-linkedin"></i>
-				</a>
-
-				<a id="facebook" class="sharebutt" href="" title="Share on Facebook" target="_blank">
-						<i class="fa fa-facebook"></i>
-				</a>
-			</div>
-		</div>
-		<div class="credits-page">&copy; Remotepixel 2018</div>
-	</div>
-
 	<!-- jQuery -->
 	<script src="/js/jquery.js"></script>
-	<script src="/js/jquery.easing.min.js"></script>
+
 	<!-- Bootstrap Core JavaScript -->
 	<script src="/js/bootstrap.min.js"></script>
-
-	<!-- general Theme JavaScript -->
-	<script src="/js/rpix_general.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $("#twitter").attr('href','http://twitter.com/share?text=' + document.title.replace('|', '%7C') + '&url=' + window.location.href + '&via=RemotePixel');
-            $("#linkedin").attr('href','http://www.linkedin.com/shareArticle?mini=true&url=' + window.location.href + '&title='+ document.title + '&source=https://remotepixel.ca');
-            $("#facebook").attr('href','https://www.facebook.com/sharer/sharer.php?u=' + window.location.href);
-        });
-    </script>
-
 </body>
-
 </html>
